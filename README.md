@@ -56,7 +56,7 @@ python api_server.py
 
 ### 話者設定
 
-`vbmcp/config.py` で話者（キャラクター）を設定できます。
+`yomiage-svr/config.py` で話者（キャラクター）を設定できます。
 
 **利用可能な話者:**
 
@@ -66,7 +66,7 @@ python api_server.py
 | `tsumugi` | 春日部つむぎ | ノーマル | 1.2 |
 | `metan` | 四国めたん | ノーマル | 1.2 |
 
-話者を追加・変更するには、`vbmcp/config.py` の `SPEAKERS` 辞書を編集してください。
+話者を追加・変更するには、`yomiage-svr/config.py` の `SPEAKERS` 辞書を編集してください。
 
 ## API仕様
 
@@ -191,7 +191,7 @@ VoiceBox-API/
 ├── server.py                   # MCPサーバー（旧版・オプション）
 ├── start_server.sh             # サーバー起動スクリプト
 ├── client_example.py           # クライアント使用例
-├── vbmcp/
+├── yomiage-svr/
 │   ├── __init__.py
 │   ├── config.py               # 話者設定
 │   ├── services/

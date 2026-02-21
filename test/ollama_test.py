@@ -24,9 +24,9 @@ import sys
 import time
 from typing import Dict, List
 
-# vbmcp モジュールから設定とサービスをインポート
-from vbmcp.config import SPEAKERS
-from vbmcp.services.ollama_service import OllamaService
+# yomiage-svr モジュールから設定とサービスをインポート
+from yomiage-svr.config import SPEAKERS
+from yomiage-svr.services.ollama_service import OllamaService
 
 # ==================== 設定 ====================
 

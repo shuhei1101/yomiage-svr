@@ -3,7 +3,7 @@
 import requests
 import logging
 from typing import Optional
-from vbmcp import config
+from yomiage-svr import config
 
 logger = logging.getLogger(__name__)
 

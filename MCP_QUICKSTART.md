@@ -105,7 +105,7 @@
 #### 口調変換が動かない
 - Ollamaが起動しているか確認: `ollama list`
 - モデルがダウンロードされているか確認
-- `vbmcp/config.py` の `OLLAMA_MODEL` 設定を確認
+- `yomiage-svr/config.py` の `OLLAMA_MODEL` 設定を確認
 
 ### HTTPサーバーと並行利用
 

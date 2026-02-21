@@ -83,7 +83,7 @@ yomiage-svr/
 ├── api_server.py                 # FastAPI HTTPサーバー（メイン）
 ├── mcp_server.py                # MCPサーバー本体（MCPクライアント用）
 ├── start_server.sh              # 自動起動スクリプト
-├── vbmcp/                       # メインパッケージ
+├── yomiage-svr/                       # メインパッケージ
 │   ├── __init__.py
 │   ├── config.py                # 話者設定・Ollama設定
 │   ├── services/

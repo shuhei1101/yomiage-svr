@@ -15,11 +15,11 @@ from pydantic import BaseModel, Field
 from dotenv import load_dotenv
 load_dotenv()
 
-from vbmcp.tools.speech_tool import SpeechTool
-from vbmcp.config import list_speakers, get_speaker, SPEAKERS
-from vbmcp.services.ollama_service import OllamaService
-from vbmcp.services.character_selector import CharacterSelector
-from vbmcp.services.startup_service import startup_service
+from yomiage-svr.tools.speech_tool import SpeechTool
+from yomiage-svr.config import list_speakers, get_speaker, SPEAKERS
+from yomiage-svr.services.ollama_service import OllamaService
+from yomiage-svr.services.character_selector import CharacterSelector
+from yomiage-svr.services.startup_service import startup_service
 
 logging.basicConfig(
     stream=sys.stderr,

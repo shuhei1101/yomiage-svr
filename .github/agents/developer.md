@@ -19,17 +19,17 @@ handoffs:
   - `/speakers` エンドポイント: 利用可能な話者一覧
   - `/transform` エンドポイント: Ollama口調変換のみ実行
   
-- **MCP Protocol対応** (`vbmcp/tools/speech_tool.py`)
+- **MCP Protocol対応** (`yomiage-svr/tools/speech_tool.py`)
   - AIエージェント（GitHub Copilot/Claude Desktop）から呼び出し可能
   - stdio通信によるツール提供
 
-- **主要サービス** (`vbmcp/services/`)
+- **主要サービス** (`yomiage-svr/services/`)
   - `voicevox_service.py`: VOICEVOX HTTP API経由で音声合成
   - `audio_service.py`: 音声ファイルの再生（sounddevice/soundfile使用）
   - `ollama_service.py`: Ollamaを使った口調変換（キャラクター別プロンプト）
   - `character_selector.py`: テキストから最適なキャラクターを自動選択
 
-- **設定管理** (`vbmcp/config.py`)
+- **設定管理** (`yomiage-svr/config.py`)
   - 話者（キャラクター）の定義: ずんだもん、春日部つむぎ、四国めたん
   - スタイルID、速度スケール、Ollamaプロンプトの管理
 
@@ -87,7 +87,7 @@ handoffs:
 ### ファイル構成ルール
 ```
 api_server.py          # FastAPIアプリケーション（エンドポイント定義のみ）
-vbmcp/
+yomiage-svr/
   __init__.py
   config.py            # 全体設定（SPEAKERS辞書、環境変数管理）
   services/            # ビジネスロジック（音声合成、再生、口調変換）
@@ -136,7 +136,7 @@ test/                  # テストコード
 ### 推奨パターン
 #### 新キャラクター追加
 ```python
-# vbmcp/config.py に追加
+# yomiage-svr/config.py に追加
 SPEAKERS["meirou"] = {
     "style_id": 2,  # VOICEVOXのスタイルID
     "speed_scale": 1.0,
@@ -193,7 +193,7 @@ async def speech(request: SpeechRequest, background_tasks: BackgroundTasks):
 
 📝 変更ファイル:
 - api_server.py: [変更内容]
-- vbmcp/config.py: [変更内容]
+- yomiage-svr/config.py: [変更内容]
 
 🧪 テスト方法:
 ```bash
@@ -285,7 +285,7 @@ MCPツール `#yomiage` を使用して音声通知を実行する:
 承知しました。冥鐘メイロウを追加します。
 
 📋 実装計画:
-1. vbmcp/config.py の SPEAKERS に "meirou" を追加
+1. yomiage-svr/config.py の SPEAKERS に "meirou" を追加
 2. スタイルID: 2、速度: 1.0 で設定
 3. Ollamaプロンプトで「落ち着いた口調」を指示
 4. README.md の話者一覧に追記

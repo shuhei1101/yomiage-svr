@@ -7,6 +7,7 @@ GitHub Copilot / Claude Desktop からキャラクターボイスを呼び出せ
 
 import asyncio
 import logging
+import random
 import sys
 from typing import Optional
 
@@ -16,10 +17,10 @@ from pydantic import BaseModel, Field
 from dotenv import load_dotenv
 load_dotenv()
 
-from vbmcp.tools.speech_tool import SpeechTool
-from vbmcp.config import list_speakers, get_speaker, SPEAKERS
-from vbmcp.services.ollama_service import OllamaService
-from vbmcp.services.startup_service import startup_service
+from yomiage-svr.tools.speech_tool import SpeechTool
+from yomiage-svr.config import list_speakers, get_speaker, SPEAKERS
+from yomiage-svr.services.ollama_service import OllamaService
+from yomiage-svr.services.startup_service import startup_service
 
 # ログ設定（MCPサーバーではstderrに出力）
 logging.basicConfig(
@@ -108,10 +109,10 @@ async def speak(
     logger.info(f"音声合成リクエスト: text='{text[:50]}...', speaker={speaker_name}, transform={transform_tone}")
     
     try:
-        # 話者が指定されていない場合は自動選択（デフォルトで最初の話者）
+        # 話者が指定されていない場合はランダム選択
         if not speaker_name:
-            speaker_name = list(SPEAKERS.keys())[0]
-            logger.info(f"話者を自動選択: {speaker_name}")
+            speaker_name = random.choice(list(SPEAKERS.keys()))
+            logger.info(f"話者をランダム選択: {speaker_name}")
         
         # 話者の存在確認
         speaker = get_speaker(speaker_name)
