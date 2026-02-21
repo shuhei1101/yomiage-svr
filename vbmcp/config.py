@@ -2,45 +2,37 @@
 VOICEVOX 話者設定
 
 このファイルでは音声合成に使用する話者（キャラクター）の設定を管理します。
+キャラクター固有の設定は charactor/ フォルダの個別ファイルに分割されています。
 """
 
-from dataclasses import dataclass
 import os
 
+# 基本クラスのインポート
+from .base import VoiceSpeaker
 
-@dataclass
-class VoiceSpeaker:
-    """話者設定クラス"""
-    id: int           # 話者ID（VOICEVOXのスタイルID）
-    name: str         # 話者名（表示用）
-    style: str        # 話し方（ノーマル、ツンツン、など）
-    speed_scale: float = 1.2  # 話す速度（0.5〜2.0）
-
-    def __str__(self) -> str:
-        return f"{self.name}（{self.style}）"
+# キャラクター固有設定のインポート
+from .charactor.zundamon import get_zundamon_speaker
+from .charactor.tsumugi import get_tsumugi_speaker  
+from .charactor.metan import get_metan_speaker
 
 
-# デフォルト話者設定
-SPEAKERS = {
-    "zundamon": VoiceSpeaker(
-        id=1,
-        name="ずんだもん",
-        style="ノーマル",
-        speed_scale=1.2,
-    ),
-    "tsumugi": VoiceSpeaker(
-        id=8,
-        name="春日部つむぎ",
-        style="ノーマル",
-        speed_scale=1.2,
-    ),
-    "metan": VoiceSpeaker(
-        id=2,
-        name="四国めたん",
-        style="ノーマル",
-        speed_scale=1.2,
-    ),
-}
+# 話者設定の動的読み込み
+def _load_speakers() -> dict[str, VoiceSpeaker]:
+    """
+    各キャラクターファイルから設定を読み込んで辞書を作成
+    
+    Returns:
+        dict[str, VoiceSpeaker]: 話者名をキーとした設定辞書
+    """
+    return {
+        "zundamon": get_zundamon_speaker(),
+        "tsumugi": get_tsumugi_speaker(),
+        "metan": get_metan_speaker(),
+    }
+
+
+# 話者設定辞書
+SPEAKERS = _load_speakers()
 
 # デフォルト話者（環境変数で上書き可能）
 DEFAULT_SPEAKER_NAME = os.getenv("DEFAULT_SPEAKER", "zundamon")
@@ -74,3 +66,18 @@ def get_speaker(name: str | None = None) -> VoiceSpeaker:
 def list_speakers() -> list[str]:
     """利用可能な話者名のリストを返す"""
     return list(SPEAKERS.keys())
+
+
+# ==================== Ollama設定 ====================
+
+# Ollamaサーバー設定
+OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "gemma2:2b")
+
+# Ollama生成パラメータ（精度重視設定）
+OLLAMA_TEMPERATURE = float(os.getenv("OLLAMA_TEMPERATURE", "0.3"))  # 低温度で一貫性重視
+OLLAMA_TOP_P = float(os.getenv("OLLAMA_TOP_P", "0.9"))              # nucleus sampling
+OLLAMA_TOP_K = int(os.getenv("OLLAMA_TOP_K", "30"))                 # トップ30候補
+OLLAMA_REPEAT_PENALTY = float(os.getenv("OLLAMA_REPEAT_PENALTY", "1.1"))  # 繰り返し防止
+OLLAMA_NUM_PREDICT = int(os.getenv("OLLAMA_NUM_PREDICT", "200"))    # 最大トークン数
+OLLAMA_TIMEOUT = int(os.getenv("OLLAMA_TIMEOUT", "15"))             # タイムアウト（秒）

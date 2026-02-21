@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "voicevox-speech": {
+      "command": "${workspaceFolder}/venv/bin/python",
+
+
+
+
+
+
+
+
+
+}  }    }      }        "PYTHONPATH": "${workspaceFolder}"      "env": {      "cwd": "${workspaceFolder}",      "args": ["mcp_server.py"],
