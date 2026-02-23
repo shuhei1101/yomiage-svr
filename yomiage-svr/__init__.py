@@ -1,1 +1,0 @@
-# yomiage-svr package

@@ -6,7 +6,11 @@ FastAPIベースの音声合成HTTPサーバー
 import asyncio
 import logging
 import sys
+import os
 from contextlib import asynccontextmanager
+
+# パッケージのインポートパスを調整
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from fastapi import FastAPI, HTTPException, BackgroundTasks
 from fastapi.responses import JSONResponse
@@ -15,11 +19,11 @@ from pydantic import BaseModel, Field
 from dotenv import load_dotenv
 load_dotenv()
 
-from yomiage-svr.tools.speech_tool import SpeechTool
-from yomiage-svr.config import list_speakers, get_speaker, SPEAKERS
-from yomiage-svr.services.ollama_service import OllamaService
-from yomiage-svr.services.character_selector import CharacterSelector
-from yomiage-svr.services.startup_service import startup_service
+from yomiage_svr.tools.speech_tool import SpeechTool
+from yomiage_svr.config import list_speakers, get_speaker, SPEAKERS
+from yomiage_svr.services.ollama_service import OllamaService
+from yomiage_svr.services.character_selector import CharacterSelector
+from yomiage_svr.services.startup_service import startup_service
 
 logging.basicConfig(
     stream=sys.stderr,

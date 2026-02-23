@@ -9,7 +9,11 @@ import asyncio
 import logging
 import random
 import sys
+import os
 from typing import Optional
+
+# パッケージのインポートパスを調整
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from mcp.server.fastmcp import FastMCP
 from pydantic import BaseModel, Field
@@ -17,10 +21,10 @@ from pydantic import BaseModel, Field
 from dotenv import load_dotenv
 load_dotenv()
 
-from yomiage-svr.tools.speech_tool import SpeechTool
-from yomiage-svr.config import list_speakers, get_speaker, SPEAKERS
-from yomiage-svr.services.ollama_service import OllamaService
-from yomiage-svr.services.startup_service import startup_service
+from yomiage_svr.tools.speech_tool import SpeechTool
+from yomiage_svr.config import list_speakers, get_speaker, SPEAKERS
+from yomiage_svr.services.ollama_service import OllamaService
+from yomiage_svr.services.startup_service import startup_service
 
 # ログ設定（MCPサーバーではstderrに出力）
 logging.basicConfig(

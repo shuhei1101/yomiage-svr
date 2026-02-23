@@ -1,14 +1,12 @@
 {
-  "mcpServers": {
-    "voicevox-speech": {
-      "command": "${workspaceFolder}/venv/bin/python",
-
-
-
-
-
-
-
-
-
-}  }    }      }        "PYTHONPATH": "${workspaceFolder}"      "env": {      "cwd": "${workspaceFolder}",      "args": ["mcp_server.py"],
+  "servers": {
+    "yomiage": {
+      "command": "/Users/nishikawashuhei/nishikawa/30_repos/yomiage-svr/venv/bin/python",
+      "args": ["mcp_server.py"],
+      "cwd": "/Users/nishikawashuhei/nishikawa/30_repos/yomiage-svr",
+      "env": {
+        "PYTHONPATH": "/Users/nishikawashuhei/nishikawa/30_repos/yomiage-svr"
+      }
+    }
+  }
+}

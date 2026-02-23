@@ -74,8 +74,8 @@ def list_speakers() -> list[str]:
 OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "gemma2:2b")
 
-# Ollama生成パラメータ（精度重視設定）
-OLLAMA_TEMPERATURE = float(os.getenv("OLLAMA_TEMPERATURE", "0.3"))  # 低温度で一貫性重視
+# Ollama生成パラメータ（バリエーション重視設定）
+OLLAMA_TEMPERATURE = float(os.getenv("OLLAMA_TEMPERATURE", "0.7"))  # 適度な温度でバリエーション確保
 OLLAMA_TOP_P = float(os.getenv("OLLAMA_TOP_P", "0.9"))              # nucleus sampling
 OLLAMA_TOP_K = int(os.getenv("OLLAMA_TOP_K", "30"))                 # トップ30候補
 OLLAMA_REPEAT_PENALTY = float(os.getenv("OLLAMA_REPEAT_PENALTY", "1.1"))  # 繰り返し防止

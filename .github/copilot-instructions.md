@@ -1,4 +1,4 @@
-# yomiage-svr プロジェクト - Copilot指示書
+# yomiage_svrプロジェクト - Copilot指示書
 
 ## ⚠️ 最優先事項: タスク完了時の音声通知（絶対厳守）
 

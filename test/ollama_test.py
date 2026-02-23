@@ -24,7 +24,7 @@ import sys
 import time
 from typing import Dict, List
 
-# yomiage-svr モジュールから設定とサービスをインポート
+# yomiage_svrモジュールから設定とサービスをインポート
 from yomiage-svr.config import SPEAKERS
 from yomiage-svr.services.ollama_service import OllamaService
 
