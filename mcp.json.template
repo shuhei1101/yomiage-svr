@@ -1,0 +1,12 @@
+{
+  "servers": {
+    "yomiage": {
+      "command": "{yomiage-svrまでの絶対パス}/venv/bin/python",
+      "args": ["mcp_server.py"],
+      "cwd": "{yomiage-svrまでの絶対パス}",
+      "env": {
+        "PYTHONPATH": "{yomiage-svrまでの絶対パス}"
+      }
+    }
+  }
+}
