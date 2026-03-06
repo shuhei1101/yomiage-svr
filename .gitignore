@@ -57,3 +57,5 @@ build/
 *.manifest
 *.spec
 *.log
+
+*.tmp/
